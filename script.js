@@ -321,7 +321,7 @@ function showEndGame(score) {
 
 function restart_game_from_popup(selectedDifficulty = "easy") {
 	document.getElementById("endGameModal").style.display = "none";
-
+	
 	score = 0;
 	document.querySelector(".score").textContent = score;
 	document.querySelector(".timer").textContent = "0:00";
@@ -349,6 +349,7 @@ function restart_game_from_popup(selectedDifficulty = "easy") {
             generateCards();
             gridContainer.style.gridTemplateColumns = gridCols;
             startTimer();
+			// ToggleNavbar();
         });
 
 }
@@ -356,7 +357,10 @@ function restart_game_from_popup(selectedDifficulty = "easy") {
 function startNewGame() {
 	// Hide the end game modal
 	document.getElementById('endGameModal').classList.add('hidden');
-	document.getElementsByClassName("scoreboard-box").style.display = "none";
+	const boxes = document.getElementsByClassName("scoreboard-box");
+	for (let box of boxes) {
+		box.style.display = "none";
+	}
 	// Get the selected difficulty
 	const difficulty = document.getElementById("difficulty").value;
 	restart_game_from_popup(difficulty);
