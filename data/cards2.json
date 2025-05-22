@@ -1,0 +1,74 @@
+[
+	{
+		"image": "assets/chili.png",
+		"name": "chili"
+	},
+	{
+		"image": "assets/grapes.png",
+		"name": "grapes"
+	},
+	{
+		"image": "assets/lemon.png",
+		"name": "lemon"
+	},
+	{
+		"image": "assets/orange.png",
+		"name": "orange"
+	},
+	{
+		"image": "assets/pineapple.png",
+		"name": "pineapple"
+	},
+	{
+		"image": "assets/strawberry.png",
+		"name": "strawberry"
+	},
+	{
+		"image": "assets/tomato.png",
+		"name": "tomato"
+	},
+	{
+		"image": "assets/watermelon.png",
+		"name": "watermelon"
+	},
+	{
+		"image": "assets/cherries.png",
+		"name": "cherries"
+	},
+	{
+		"image": "assets/kiwi.jpg",
+		"name": "kiwi"
+	},
+	{
+		"image": "assets/banana.png",
+		"name": "banana"
+	},
+	{
+		"image": "assets/krob.jpeg",
+		"name": "kromb"
+	},
+	{
+		"image": "assets/kzr.png",
+		"name": "kzr"
+	},
+	{
+		"image": "assets/bet.jpg",
+		"name": "bet"
+	},
+	{
+		"image": "assets/basl.jpeg",
+		"name": "basl"
+	},
+	{
+		"image": "assets/khyar.png",
+		"name": "khyar"
+	},
+	{
+		"image": "assets/fegl.jpg",
+		"name": "fegl"
+	},
+	{
+		"image": "assets/bangr.jpg",
+		"name": "bangr"
+	}
+]
