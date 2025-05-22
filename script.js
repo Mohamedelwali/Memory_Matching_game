@@ -5,9 +5,7 @@ const correctSound = document.querySelector(".correctSound")
 const wrongSound = document.querySelector(".wrongSound")
 const muteButton = document.querySelector(".muteBtn");
 const homeButton = document.querySelector(".homeBtn");
-const ScoreboardBox = document.querySelector(".scoreboard-box");
 const bgSound = document.querySelector(".bgSound")
-const MainTitle = document.querySelector("#MainTitle")
 const nav = document.querySelector(".nav")
 const greeting = document.createElement("h3");
 const welcome = document.createElement("div");
@@ -21,8 +19,7 @@ let score = 0;
 let timer;
 let time = 0;
 let playerName;
-let Difficulty;
-//alfy
+
 document.querySelector(".score").textContent = score;
 // adding the mute button
 window.onload = function () {
@@ -114,3 +111,101 @@ hardBtn.addEventListener("click", function () {
 			gridContainer.style.gridTemplateColumns = "repeat(8, 70px)";
 		});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function ToggleNavbar(toggle = true) {
+
+	if(toggle){
+	nav.style.display =  "flex" ;
+	MainTitle.style.display =  "block" ;
+	ScoreboardBox.style.display = "none" ;
+	Container.classList.add("game-container");
+	}else{
+	nav.style.display = "none";
+	MainTitle.style.display =  "none";
+	ScoreboardBox.style.display = "block";
+		Container.classList.remove("game-container");
+	}
+	
+}
+
+
+
+
+
+
+
+function SaveToLocalStorage( time) {
+	var offlineData = JSON.parse(localStorage.getItem("offlineData")) || [];
+
+	if(offlineData.length == 3){
+		offlineData.pop();
+	}
+	offlineData = [{
+		name: playerName ?? "Unknown",
+		time: time,
+		difficulty : Difficulty
+	} , ...offlineData]
+	localStorage.setItem("offlineData", JSON.stringify(offlineData));
+}
+
+function SetScoreBoard() {
+	// get the current score and time from local storage
+	var offlineData = JSON.parse(localStorage.getItem("offlineData")) || [];
+	for (let index = 0; index < offlineData.length; index++) {
+		const element = offlineData[index];
+			const rows = document.querySelectorAll('.score-row');
+	 rows[index].textContent = element.name + "-" + element.time +  "-" +element.difficulty ;
+	}
+}
+//----------------------------------------------------------------------------------------
+
+// stop the timer
+function stopTimer() {
+	clearInterval(timer);
+}
+// home button that reset everything
+homeButton.addEventListener("click", function hoom () {
+	gridContainer.innerHTML = "";
+	greeting.innerHTML = "";
+	SetScoreBoard()
+	score = 0;
+	gridContainer.appendChild(welcome);
+	gridContainer.style.gridTemplateColumns = "";
+	restartButton.style.display = "none";
+	document.querySelector(".timer").textContent = "0:00";
+	stopTimer();
+	ToggleNavbar(false);
+	document.querySelector(".score").textContent = score;
+});
+// restart button to restart the current difficulty
+function restart() {
+	resetBoard();
+	shuffleCards();
+	score = 0;
+	document.querySelector(".score").textContent = score;
+	gridContainer.innerHTML = "";
+	generateCards();
+	stopTimer();
+	startTimer();
+	document.getElementById('endGameModal').classList.add('hidden');
+
+}
