@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Memory Card Game</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="animations.css" />
+		 <audio class="bgSound" src="SFX/exploration-chiptune-rpg-adventure-theme-336428.mp3" loop></audio> 
+		<audio class="correctSound" src="SFX/Correct Answer Sound Effect.mp3"></audio>
+		<audio class="wrongSound" src="SFX/Wrong Answer Sound effect.mp3"></audio>
+	</head>
+	<body>
+
+
+
+
+		<h1 id="MainTitle">Memory Card Game</h1>
+		<div class="nav">
+			<div>Score: <span class="score"></span></div>
+			<button class="homeBtn">🏡</button>
+			<button class="muteBtn">🔊</button>
+			<div>Time spent: <span class="timer"></span></div>
+		</div>
+		<div class="container">
+		<div class="grid-container"></div>
+
+
+        
+		<div class="actions">
+			<button class="restartBtn" onclick="restart()" style="display: none;">Restart</button>
+		</div>
+		</div>
+
+		
+		<script src="script.js"></script>
+	</body>
+	
+</html>
