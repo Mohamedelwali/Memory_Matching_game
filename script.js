@@ -112,24 +112,27 @@ hardBtn.addEventListener("click", function () {
 		});
 });
 
+// timer using set interval that time += 1 runs that function every second with format i gave him
+function startTimer() {
+	let seconds = 0;
+	let minutes = 0;
 
+	document.querySelector(".timer").textContent = "0:00";
 
+	timer = setInterval(() => {
+		seconds++;
 
+		if (seconds >= 60) {
+			seconds = 0;
+			minutes++;
+		}
+		const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		document.querySelector(
+			".timer"
+		).textContent = `${minutes}:${formattedSeconds}`;
+	}, 1000);
+}
 
 function ToggleNavbar(toggle = true) {
 
@@ -144,14 +147,38 @@ function ToggleNavbar(toggle = true) {
 	ScoreboardBox.style.display = "block";
 		Container.classList.remove("game-container");
 	}
-	
+
 }
 
-
-
-
-
-
+// shuffle cards using math methods and check if fetching was done probably before it was run
+function shuffleCards() {
+	let currentIndex = cards.length;
+	let randomIndex;
+	let temporaryValue;
+	while (currentIndex !== 0) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+		temporaryValue = cards[currentIndex];
+		cards[currentIndex] = cards[randomIndex];
+		cards[randomIndex] = temporaryValue;
+	}
+}
+// creating divs and adding image and name to the card to compare if they match or not in next functions
+function generateCards() {
+	for (let card of cards) {
+		const cardElement = document.createElement("div");
+		cardElement.classList.add("card");
+		cardElement.setAttribute("data-name", card.name);
+		cardElement.innerHTML = `
+			<div class="front">
+			<img class="front-image" src=${card.image} />
+			</div>
+			<div class="back"></div>
+			`;
+		gridContainer.appendChild(cardElement);
+		cardElement.addEventListener("click", flipCard);
+	}
+}
 
 function SaveToLocalStorage( time) {
 	var offlineData = JSON.parse(localStorage.getItem("offlineData")) || [];
