@@ -11,10 +11,18 @@
 		<audio class="wrongSound" src="SFX/Wrong Answer Sound effect.mp3"></audio>
 	</head>
 	<body>
-
-
-
-
+		<div class="lines">
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+		  </div>		  
 		<h1 id="MainTitle">Memory Card Game</h1>
 		<div class="nav">
 			<div>Score: <span class="score"></span></div>
@@ -23,10 +31,17 @@
 			<div>Time spent: <span class="timer"></span></div>
 		</div>
 		<div class="container">
-		<div class="grid-container"></div>
-
-
-        
+		<div class="grid-container">
+			<div class="scoreboard-box">
+				<h2>Score Board</h2>
+				<div class="naming-Score">
+					Name - Time - Difficulty
+				</div>
+				<div class="score-row">No Score Yet</div>
+				<div class="score-row">No Score Yet</div>
+				<div class="score-row">No Score Yet</div>
+			</div>
+		</div>
 		<div class="actions">
 			<button class="restartBtn" onclick="restart()" style="display: none;">Restart</button>
 		</div>

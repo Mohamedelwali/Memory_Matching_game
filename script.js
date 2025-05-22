@@ -5,7 +5,9 @@ const correctSound = document.querySelector(".correctSound")
 const wrongSound = document.querySelector(".wrongSound")
 const muteButton = document.querySelector(".muteBtn");
 const homeButton = document.querySelector(".homeBtn");
+const ScoreboardBox = document.querySelector(".scoreboard-box");
 const bgSound = document.querySelector(".bgSound")
+const MainTitle = document.querySelector("#MainTitle")
 const nav = document.querySelector(".nav")
 const greeting = document.createElement("h3");
 const welcome = document.createElement("div");
@@ -235,4 +237,75 @@ function restart() {
 	startTimer();
 	document.getElementById('endGameModal').classList.add('hidden');
 
+}
+// fliping card and adding score by one and get it ready for next function that matches the cards
+function flipCard() {
+	if (lockBoard) return;
+	if (this === firstCard) return;
+
+	this.classList.add("flipped");
+	if (!firstCard) {
+		firstCard = this;
+		return;
+	}
+
+	secondCard = this;
+	score++;
+	document.querySelector(".score").textContent = score;
+	lockBoard = true;
+
+	checkForMatch();
+}
+// checking the match of cards using the name of it i used in json file
+function checkForMatch() {
+	let isMatch = firstCard.dataset.name === secondCard.dataset.name;
+
+	isMatch ? disableCards() : unflipCards();
+}
+// this function works if cards match
+function disableCards() {
+	firstCard.removeEventListener("click", flipCard); // --> to keep the card on its face
+	secondCard.removeEventListener("click", flipCard);
+
+	resetBoard();
+}
+// this function works if cards didnt match and takes 1 second before fliping it to make memory for the player
+function unflipCards() {
+	setTimeout(() => {
+		firstCard.classList.remove("flipped");
+		secondCard.classList.remove("flipped");
+		resetBoard();
+	}, 1000);
+}
+// to reset all flags i created and assigned to go to next cards
+function resetBoard() {
+	firstCard = null;
+	secondCard = null;
+	lockBoard = false;
+}
+// every time i flip 2 cards i go check for win
+function checkForMatch() {
+	let isMatch = firstCard.dataset.name === secondCard.dataset.name;
+
+	if (isMatch) {
+		disableCards();
+		checkWin();
+		correctSound.play()
+	} else {
+		unflipCards();
+		wrongSound.play()
+	}
+}
+// this check if all json file is now flipped and alreting or poping up for win time
+function checkWin() {
+	
+	const flippedCards = document.querySelectorAll(".flipped");
+	if (flippedCards.length === cards.length) {
+		setTimeout(() => {
+			time = document.querySelector(".timer").textContent;
+			stopTimer();
+			SaveToLocalStorage( time);
+			showEndGame(score);			
+		}, 500);
+	}
 }

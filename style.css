@@ -238,6 +238,110 @@
 	backface-visibility: hidden;
   }
 
+ /* Actions */
+ .actions {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin: 1rem 0;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+	h1 {
+	  font-size: 2rem;
+	}
+	
+	.nav {
+	  flex-wrap: wrap;
+	  gap: 0.5rem;
+	  padding: 0.75rem;
+	}
+	
+	.nav div {
+	  font-size: 0.9rem;
+	}
+	
+	.muteBtn, .homeBtn {
+	  width: 40px;
+	  height: 40px;
+	  font-size: 1.2rem;
+	}
+	
+	.welcome {
+	  padding: 1.5rem;
+	}
+	
+	.welcome p {
+	  font-size: 1.2rem;
+	}
+	
+	.difficulty-buttons {
+	  gap: 0.5rem;
+	}
+	
+	.easyBtn, .mediumBtn, .hardBtn {
+	  padding: 0.5rem;
+	  font-size: 0.9rem;
+	}
+  }
+  
+  @media (max-width: 480px) {
+	h1 {
+	  font-size: 1.8rem;
+	}
+	
+	.nav {
+	  justify-content: center;
+	}
+	
+	.card {
+	  height: 60px;
+	  width: 60px;
+	}
+	
+	.welcome {
+	  width: 95%;
+	  padding: 1rem;
+	  margin: 1rem auto;
+	}
+	
+	.name {
+	  max-width: 100%;
+	}
+  }
+  
+  /* Animation for matched cards */
+  @keyframes matched {
+	0% { transform: rotateY(180deg) scale(1); }
+	50% { transform: rotateY(180deg) scale(1.1); }
+	100% { transform: rotateY(180deg) scale(1); }
+  }
+  
+  .card.matched {
+	animation: matched 0.5s ease-in-out;
+  }
+  
+  /* Animation for wrong match */
+  @keyframes wrongMatch {
+	0% { transform: translateX(0); }
+	25% { transform: translateX(-5px); }
+	50% { transform: translateX(5px); }
+	75% { transform: translateX(-5px); }
+	100% { transform: translateX(0); }
+  }
+  
    .wrong-match {
 	animation: wrongMatch 0.5s ease-in-out;
+  }
+  .scoreboard-box {
+	text-align: center;
+	line-height: 3rem;
+	width: 100%;
+	max-width: 500px;
+	padding: 1rem;
+	background-color: #1e1e1e;
+	border-radius: 15px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	margin: auto;
   }
