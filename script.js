@@ -309,3 +309,70 @@ function checkWin() {
 		}, 500);
 	}
 }
+
+function showEndGame(score) {
+	const modal = document.getElementById('endGameModal');
+	const scoreSpan = document.getElementById('finalScore');
+	scoreSpan.textContent = score;
+	modal.classList.remove('hidden');  // <-- makes it visible
+	document.getElementById("difficulty").focus();
+}
+
+
+function restart_game_from_popup(selectedDifficulty = "easy") {
+	document.getElementById("endGameModal").style.display = "none";
+
+	score = 0;
+	document.querySelector(".score").textContent = score;
+	document.querySelector(".timer").textContent = "0:00";
+	clearInterval(timer);
+
+	// Clear board
+    gridContainer.innerHTML = "";
+
+	// Fetch and generate cards based on selectedDifficulty
+    let jsonFile = "data/cards.json"; // default easy
+    let gridCols = "repeat(4, 70px)";
+    if (selectedDifficulty === "medium") {
+        jsonFile = "data/cards2.json";
+        gridCols = "repeat(6, 70px)";
+    } else if (selectedDifficulty === "hard") {
+        jsonFile = "data/cards3.json";
+        gridCols = "repeat(8, 70px)";
+    }
+
+    fetch(jsonFile)
+        .then(res => res.json())
+        .then(data => {
+            cards = [...data, ...data];
+            shuffleCards();
+            generateCards();
+            gridContainer.style.gridTemplateColumns = gridCols;
+            startTimer();
+        });
+
+}
+
+function startNewGame() {
+	// Hide the end game modal
+	document.getElementById('endGameModal').classList.add('hidden');
+	document.getElementsByClassName("scoreboard-box").style.display = "none";
+	// Get the selected difficulty
+	const difficulty = document.getElementById("difficulty").value;
+	restart_game_from_popup(difficulty);
+}
+
+function home() {
+	gridContainer.innerHTML = "";
+	greeting.innerHTML = "";
+	SetScoreBoard()
+	score = 0;
+	gridContainer.appendChild(welcome);
+	gridContainer.style.gridTemplateColumns = "";
+	restartButton.style.display = "none";
+	document.querySelector(".timer").textContent = "0:00";
+	stopTimer();
+	ToggleNavbar(false);
+	document.querySelector(".score").textContent = score;
+	document.getElementById('endGameModal').classList.add('hidden');
+}

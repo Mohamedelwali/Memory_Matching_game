@@ -32,22 +32,40 @@
 		</div>
 		<div class="container">
 		<div class="grid-container">
-			<div class="scoreboard-box">
-				<h2>Score Board</h2>
-				<div class="naming-Score">
-					Name - Time - Difficulty
-				</div>
-				<div class="score-row">No Score Yet</div>
-				<div class="score-row">No Score Yet</div>
-				<div class="score-row">No Score Yet</div>
+		</div>
+		<div class="scoreboard-box">
+			<h2>Score Board</h2>
+			<div class="naming-Score">
+				Name - Time - Difficulty
 			</div>
+			<div class="score-row">No Score Yet</div>
+			<div class="score-row">No Score Yet</div>
+			<div class="score-row">No Score Yet</div>
 		</div>
 		<div class="actions">
 			<button class="restartBtn" onclick="restart()" style="display: none;">Restart</button>
 		</div>
 		</div>
-
+		<div id="endGameModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+			<div class="modal-backdrop"></div>
+			<div class="modal-box">
+			  <button class="modal-close" aria-label="Close modal" onclick="home()">×</button>
+			  <h2 class="modal-title" id="modalTitle">🎉 Congratulations!</h2>
+			  <p class="modal-score">Your Score: <span id="finalScore">0</span></p>
 		
+			  <label for="difficulty" class="modal-label">Choose difficulty:</label>
+			  <select id="difficulty" class="modal-select" aria-label="Select difficulty">
+				<option value="easy" selected>Easy</option>
+				<option value="medium" >Medium</option>
+				<option value="hard">Hard</option>
+			  </select>
+		
+			  <div class="modal-buttons">
+				<button onclick="startNewGame()" class="btn play-again btn-primary">Play Again</button>
+				<button onclick="home()" class="hooom">Home</button>
+			  </div>
+			</div>
+		</div>
 		<script src="script.js"></script>
 	</body>
 	
