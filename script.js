@@ -320,10 +320,10 @@ function checkWin() {
 }
 
 function showEndGame(score) {
-	const modal = document.getElementById('endGameModal');
-	const scoreSpan = document.getElementById('finalScore');
+	const modal = document.getElementById("endGameModal");
+	const scoreSpan = document.getElementById("finalScore");
 	scoreSpan.textContent = score;
-	modal.classList.remove('hidden');  // <-- makes it visible
+	modal.classList.style.display = "flex"; // <-- makes it visible
 	document.getElementById("difficulty").focus();
 }
 
