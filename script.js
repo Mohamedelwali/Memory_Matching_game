@@ -377,7 +377,7 @@ function startNewGame() {
 }
 
 function home() {
-	document.getElementById("endGameModal").style.display = "noneg"
+	document.getElementById("endGameModal").style.display = "none"
 	gridContainer.innerHTML = "";
 	greeting.innerHTML = "";
 	SetScoreBoard()
