@@ -315,6 +315,7 @@ function checkWin() {
 			stopTimer();
 			SaveToLocalStorage( time);
 			showEndGame(score);
+			document.getElementById("endGameModal").style.display = "flex";
 		}, 500);
 	}
 }
@@ -323,7 +324,7 @@ function showEndGame(score) {
 	const modal = document.getElementById("endGameModal");
 	const scoreSpan = document.getElementById("finalScore");
 	scoreSpan.textContent = score;
-	modal.classList.style.display = "flex"; // <-- makes it visible
+	modal.classList.remove("hidden"); // <-- makes it visible
 	document.getElementById("difficulty").focus();
 }
 
@@ -341,14 +342,14 @@ function restart_game_from_popup(selectedDifficulty = "easy") {
 
 	// Fetch and generate cards based on selectedDifficulty
     let jsonFile = "data/cards.json"; // default easy
-    let gridCols = "repeat(4, 70px)";
-    if (selectedDifficulty === "medium") {
-        jsonFile = "data/cards2.json";
-        gridCols = "repeat(6, 70px)";
-    } else if (selectedDifficulty === "hard") {
-        jsonFile = "data/cards3.json";
-        gridCols = "repeat(8, 70px)";
-    }
+    let gridCols = "repeat(4, 50px)";
+		if (selectedDifficulty === "medium") {
+			jsonFile = "data/cards2.json";
+			gridCols = "repeat(6, 50px)";
+		} else if (selectedDifficulty === "hard") {
+			jsonFile = "data/cards3.json";
+			gridCols = "repeat(8, 50px)";
+		}
 
     fetch(jsonFile)
         .then(res => res.json())
@@ -376,6 +377,7 @@ function startNewGame() {
 }
 
 function home() {
+	document.getElementById("endGameModal").style.display = "noneg"
 	gridContainer.innerHTML = "";
 	greeting.innerHTML = "";
 	SetScoreBoard()
