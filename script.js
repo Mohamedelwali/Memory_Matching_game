@@ -57,6 +57,7 @@ const mediumBtn = document.querySelector(".mediumBtn");
 const hardBtn = document.querySelector(".hardBtn");
 // event for every button fetching json array of object that have numbers of pics for level -- 1
 easyBtn.addEventListener("click", function () {
+
 	Difficulty = "easy";
 	 playerName = document.querySelector(".name").value;
 	gridContainer.innerHTML = "";
@@ -71,9 +72,10 @@ easyBtn.addEventListener("click", function () {
 			shuffleCards();
 			generateCards();
 			startTimer();
-					ToggleNavbar();
-			gridContainer.style.gridTemplateColumns = "repeat(4, 70px)";
+			ToggleNavbar();
+			gridContainer.style.gridTemplateColumns = "repeat(4, 50px)";
 		});
+MainTitle.style.display = "none"
 });
 // -- 2
 mediumBtn.addEventListener("click", function () {
@@ -90,9 +92,11 @@ mediumBtn.addEventListener("click", function () {
 			shuffleCards();
 			generateCards();
 			startTimer();
-					ToggleNavbar();
-			gridContainer.style.gridTemplateColumns = "repeat(6, 70px)";
+			ToggleNavbar();
+			gridContainer.style.gridTemplateColumns = "repeat(6, 50px)";
 		});
+		MainTitle.style.display = "none"
+
 });
 // -- 3
 hardBtn.addEventListener("click", function () {
@@ -110,8 +114,15 @@ hardBtn.addEventListener("click", function () {
 			generateCards();
 			startTimer();
 			ToggleNavbar();
-			gridContainer.style.gridTemplateColumns = "repeat(8, 70px)";
+					gridContainer.style.gridTemplateColumns = "repeat(8, 50px)";
+
+			
+					
+
 		});
+		MainTitle.style.display = "none"
+
+
 });
 
 // timer using set interval that time += 1 runs that function every second with format i gave him
@@ -129,18 +140,15 @@ function startTimer() {
 			minutes++;
 		}
 		const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
-
-		document.querySelector(
-			".timer"
-		).textContent = `${minutes}:${formattedSeconds}`;
-	}, 1000);
+		document.querySelector(".timer").textContent = `${minutes}:${formattedSeconds}`;
+		}, 1000);
 }
 
 function ToggleNavbar(toggle = true) {
 
 	if(toggle){
 	nav.style.display =  "flex" ;
-	MainTitle.style.display =  "block" ;
+
 	ScoreboardBox.style.display = "none" ;
 	Container.classList.add("game-container");
 	}else{

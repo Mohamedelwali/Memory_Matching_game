@@ -5,7 +5,7 @@
 }
 
 body {
-	min-height: 100vh;
+	height: 100vh;
 	background-color: #121212;
 	color: #ffffff;
 	font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
@@ -13,7 +13,8 @@ body {
 	flex-direction: column;
 	align-items: center;
 	padding: 1rem;
-	overflow-x: hidden;
+	overflow: hidden;
+
 }
 
 /* Header Styles */
@@ -21,7 +22,7 @@ h1 {
 	text-align: center;
 	font-weight: 700;
 	font-size: 2.5rem;
-	margin: 1rem 0;
+
 	color: #ff6b6b;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -49,7 +50,7 @@ h3 span {
 	background-color: #1e1e1e;
 	border-radius: 10px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	margin: auto;
+
 }
 
 .nav div {
@@ -95,7 +96,7 @@ button {
 	background-color: #4ecdc4;
 	color: #121212;
 	font-weight: 600;
-	/* margin: 1.5rem 0; */
+
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -107,7 +108,7 @@ button {
 /* Welcome Screen */
 .welcome {
 	text-align: center;
-	margin: 2rem;
+	margin: 0 auto;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	color: #f8f9fa;
 	background-color: #2b2b2b;
@@ -188,12 +189,12 @@ button {
 	justify-content: center;
 	gap: 0.75rem;
 	width: 100%;
-	margin: 1rem 0;
+	margin: 1rem auto;
 }
 
 .card {
-	height: 70px;
-	width: 70px;
+	height: 50px;
+	width: 50px;
 	border-radius: 10px;
 	background-color: white;
 	position: relative;
@@ -202,6 +203,18 @@ button {
 	cursor: pointer;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.card-hard{
+		height: 50px;
+	width: 50px;
+	border-radius: 10px;
+	background-color: white;
+	position: relative;
+	transform-style: preserve-3d;
+	transition: all 0.5s ease-in-out;
+	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 
 .card.flipped {
 	transform: rotateY(180deg);
@@ -284,6 +297,13 @@ button {
 	  padding: 0.5rem;
 	  font-size: 0.9rem;
 	}
+	
+
+
+.grid-container-hard {
+	grid-template-columns: repeat(8, 30px);
+}
+
 }
   
 @media (max-width: 480px) {
@@ -295,10 +315,7 @@ button {
 	  justify-content: center;
 	}
 	
-	.card {
-	  height: 60px;
-	  width: 60px;
-	}
+
 	
 	.welcome {
 	  width: 95%;
@@ -309,6 +326,7 @@ button {
 	.name {
 	  max-width: 100%;
 	}
+
 }
   
 /* Animation for matched cards */
