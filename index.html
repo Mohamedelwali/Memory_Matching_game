@@ -6,23 +6,11 @@
 		<title>Memory Card Game</title>
 		<link rel="stylesheet" href="style.css" />
 		<!-- <link rel="stylesheet" href="animations.css" /> -->
-		 <audio class="bgSound" src="SFX/exploration-chiptune-rpg-adventure-theme-336428.mp3" loop></audio> 
+		 <audio class="bgSound" src="SFX/exploration-chiptune-rpg-adventure-theme-336428.mp3" loop></audio>
 		<audio class="correctSound" src="SFX/Correct Answer Sound Effect.mp3"></audio>
 		<audio class="wrongSound" src="SFX/Wrong Answer Sound effect.mp3"></audio>
 	</head>
 	<body>
-		<div class="lines">
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>
-		  </div>		  
 		<h1 id="MainTitle">Memory Card Game</h1>
 		<div class="nav">
 			<div>Score: <span class="score"></span></div>
@@ -52,14 +40,14 @@
 			  <button class="modal-close" aria-label="Close modal" onclick="home()">×</button>
 			  <h2 class="modal-title" id="modalTitle">🎉 Congratulations!</h2>
 			  <p class="modal-score">Your Score: <span id="finalScore">0</span></p>
-		
+
 			  <label for="difficulty" class="modal-label">Choose difficulty:</label>
 			  <select id="difficulty" class="modal-select" aria-label="Select difficulty">
 				<option value="easy" selected>Easy</option>
 				<option value="medium" >Medium</option>
 				<option value="hard">Hard</option>
 			  </select>
-		
+
 			  <div class="modal-buttons">
 				<button onclick="startNewGame()" class="btn play-again btn-primary">Play Again</button>
 				<button onclick="home()" class="hooom">Home</button>
@@ -68,5 +56,4 @@
 		</div>
 		<script src="script.js"></script>
 	</body>
-	
 </html>

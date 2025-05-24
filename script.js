@@ -116,8 +116,8 @@ hardBtn.addEventListener("click", function () {
 			ToggleNavbar();
 					gridContainer.style.gridTemplateColumns = "repeat(8, 50px)";
 
-			
-					
+
+
 
 		});
 		MainTitle.style.display = "none"
@@ -262,6 +262,7 @@ function flipCard() {
 	document.querySelector(".score").textContent = score;
 	lockBoard = true;
 
+
 	checkForMatch();
 }
 // checking the match of cards using the name of it i used in json file
@@ -306,14 +307,14 @@ function checkForMatch() {
 }
 // this check if all json file is now flipped and alreting or poping up for win time
 function checkWin() {
-	
+
 	const flippedCards = document.querySelectorAll(".flipped");
 	if (flippedCards.length === cards.length) {
 		setTimeout(() => {
 			time = document.querySelector(".timer").textContent;
 			stopTimer();
 			SaveToLocalStorage( time);
-			showEndGame(score);			
+			showEndGame(score);
 		}, 500);
 	}
 }
@@ -329,7 +330,7 @@ function showEndGame(score) {
 
 function restart_game_from_popup(selectedDifficulty = "easy") {
 	document.getElementById("endGameModal").style.display = "none";
-	
+
 	score = 0;
 	document.querySelector(".score").textContent = score;
 	document.querySelector(".timer").textContent = "0:00";
